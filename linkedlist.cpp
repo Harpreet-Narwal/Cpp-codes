@@ -101,21 +101,14 @@ int main(){
     insertAtTail(head, 4);
     display(head);
 
-    // // display(head);
-    // // cout<<search(head, 3)<<endl;;
-
-    // deletion(head, 3); // for deletion of element in linked list
     // display(head);
+    // cout<<search(head, 3)<<endl;;
 
-    // deleteAtHead(head); //for deletion of head in linked list
-    // display(head);
+    deletion(head, 3); // for deletion of element in linked list
+    display(head);
 
-    // node* newhead= reverse(head); // for reversing linked list
-    // display(newhead);
-    
-    
-    node* newhead= reverseRecursive(head); // for reversing linked list using recursion
-    display(newhead); // COMPLEXITY = O(n)
+    deleteAtHead(head); //for deletion of head in linked list
+    display(head);
 
     return 0;
 }
