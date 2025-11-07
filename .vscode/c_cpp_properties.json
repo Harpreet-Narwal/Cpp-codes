@@ -1,0 +1,17 @@
+{
+  "configurations": [
+    {
+      "name": "macos-gcc-14",
+      "includePath": [
+        "${workspaceFolder}/**",
+        "${workspaceFolder}/include", // Add this to include the 'include' folder
+        "/opt/homebrew/Cellar/gcc/14.2.0_1/include/c++/14" // Add the GCC include path if needed
+      ],
+      "compilerPath": "/opt/homebrew/bin/g++-14",
+      "cStandard": "c23",
+      "cppStandard": "c++17",
+      "intelliSenseMode": "gcc-x64"
+    }
+  ],
+  "version": 4
+}
