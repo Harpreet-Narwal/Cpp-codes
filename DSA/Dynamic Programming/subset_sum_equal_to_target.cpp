@@ -16,7 +16,7 @@ private:
         if(target >= arr[ind]){
             take = fun(ind-1, target-arr[ind], arr, dp);
         }
-        return dp[ind][target] = take | notTake;
+        return dp[ind][target] = take || notTake;
     }
 
 public:
