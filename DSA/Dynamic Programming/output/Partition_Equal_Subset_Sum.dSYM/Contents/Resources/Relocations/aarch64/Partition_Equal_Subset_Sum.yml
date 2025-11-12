@@ -1,0 +1,5 @@
+---
+triple:          'arm64-apple-darwin'
+binary-path:     '/Users/happy/Desktop/CppCoding/DSA/Dynamic Programming/output/Partition_Equal_Subset_Sum'
+relocations:     []
+...
