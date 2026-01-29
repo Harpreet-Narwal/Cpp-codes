@@ -1,5 +1,6 @@
 #include<bits/stdc++.h>
 #include<iostream>
+#include<map>
 
 using namespace std;
 
@@ -420,34 +421,64 @@ int main(){
     
     // S: Inverted Diamond:
 
-    int n;
-    cin>>n;
+    // int n;
+    // cin>>n;
 
-    for(int i=0; i<n; i++){
-        for(int j=0; j<n-i; j++){
-            cout<<"*";
+    // for(int i=0; i<n; i++){
+    //     for(int j=0; j<n-i; j++){
+    //         cout<<"*";
+    //     }
+    //     for(int j=0; j<2*i + 1; j++){
+    //         cout<<" ";
+    //     }
+    //     for(int j=0; j<n-i; j++){
+    //         cout<<"*";
+    //     }
+    //     cout<<endl;
+    // }
+
+    // for(int i=n-2; i>=0; i--){
+    //     for(int j=0; j<n-i; j++){
+    //         cout<<"*";
+    //     }
+    //     for(int j=0; j<2*i + 1; j++){
+    //         cout<<" ";
+    //     }
+    //     for(int j=0; j<n-i; j++){
+    //         cout<<"*";
+    //     }
+
+    //     cout<<endl;
+    // }
+
+
+
+    vector<int> arr ={1, 4 ,2, -2, -9, 10, 2, 12, 2, -4, -4, -4, -4, 2,  6, 7};
+    
+    int peak = arr[0];
+    int ind = 0;
+    map<int, int> mpp;
+
+    for(int i=1; i<arr.size(); i++){
+        if(arr[i] * arr[i-1] > 0){
+            if(peak < 0 && arr[i] < peak){
+                peak = arr[i];
+                ind = i;
+            }
+            if(peak >= 0 && arr[i] > peak){
+                peak = arr[i];
+                ind = i;
+            }
+        }else{
+            mpp.insert({ind, peak});
+            peak = arr[i];
+            ind = i;
         }
-        for(int j=0; j<2*i + 1; j++){
-            cout<<" ";
-        }
-        for(int j=0; j<n-i; j++){
-            cout<<"*";
-        }
-        cout<<endl;
     }
 
-    for(int i=n-2; i>=0; i--){
-        for(int j=0; j<n-i; j++){
-            cout<<"*";
-        }
-        for(int j=0; j<2*i + 1; j++){
-            cout<<" ";
-        }
-        for(int j=0; j<n-i; j++){
-            cout<<"*";
-        }
-
-        cout<<endl;
+    for(auto it: mpp){
+        cout<<it.first<<" "<<it.second<<endl;
     }
+
 
 }
