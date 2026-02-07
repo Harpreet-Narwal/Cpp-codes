@@ -20,3 +20,27 @@ using namespace std;
 // }
 
 
+// B: Sum of Array
+
+#define ll long long
+
+int main(){
+    ll n;
+    cin>>n;
+
+    vector<ll> arr(n);
+
+    for(ll i=0; i<n; i++){
+        cin>>arr[i];
+    }
+
+    ll sum = 0;
+
+    for(ll i=0; i<n; i++){
+        sum += arr[i];
+    }
+
+    cout<<sum;
+
+    return 0;
+}
