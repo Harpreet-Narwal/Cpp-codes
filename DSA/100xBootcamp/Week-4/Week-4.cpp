@@ -221,16 +221,254 @@ using namespace std;
 // I: Reverse
 
 
-int main(){
-    ll n;
-    cin>>n;
+// int main(){
+//     ll n;
+//     cin>>n;
 
-    vector<ll> arr(n);
+//     vector<ll> arr(n);
 
-    for(ll i=0; i<n; i++){
-        cin>>arr[i];
-    }
+//     for(ll i=0; i<n; i++){
+//         cin>>arr[i];
+//     }
 
+
+//     for(int i=0; i<(n/2); i++){
+//         swap(arr[i], arr[n-i-1]);
+//     }
+
+//     for(int i=0; i<n; i++){
+//         cout<<arr[i]<<" ";
+//     }
     
 
+// }
+
+// J: Arrange The Number:
+
+// int main(){
+
+//     int t;
+//     cin>>t;
+
+//     for(int i=0; i<t; i++){
+
+//         ll n;
+//         cin>>n;
+
+//         vector<ll> arr;
+
+//         for(int i=1; i<=n; i++){
+//             if(i%2 != 0){
+//                 arr.push_back(i);
+//             }
+//         }
+
+//         for(int i=n; i>=2; i--){
+//             if(i % 2 == 0){
+//                 arr.push_back(i);
+//             }
+//         }
+
+//         for(int i=0; i<n; i++){
+//             cout<<arr[i]<<" ";
+//         }
+
+//         cout<<endl;
+//     }
+
+
+// }
+
+
+// K: Swap Alternate:
+
+
+
+// int main(){
+
+//     int t;
+//     cin>>t;
+
+//     for(int i=0; i<t; i++){
+
+//         ll n;
+//         cin>>n;
+
+//         vector<ll> arr(n);
+
+//         for(int i=0; i<n; i++){
+//             cin>>arr[i];
+//         }
+
+//         for(int i=1; i<n; i+=2){
+//             swap(arr[i], arr[i-1]);
+//         }
+
+
+//         for(int i=0; i<n; i++){
+//             cout<<arr[i]<< " ";
+//         }
+
+//         cout<<endl;
+//     }
+// }
+
+
+// L: Missing Number:
+
+// int main(){
+
+//     int t;
+//     cin>>t;
+
+//     for(int i=0; i<t; i++){
+
+//         ll n;
+//         cin>>n;
+
+//         vector<ll> arr(n);
+
+//         for(int i=0; i<n; i++){
+//             cin>>arr[i];
+//         }
+
+//         unordered_map<int, int> mpp;
+
+//         for(auto it: arr){
+//             mpp[it]++;
+//         }
+
+//         for(auto it: mpp){
+//             if(it.second == 1){
+//                 cout<<it.first;
+//             }
+//         }
+
+//         cout<<endl;
+
+//     }
+// }
+
+
+// M: Find Duplicate Number:
+
+
+// int main(){
+
+//     int t;
+//     cin>>t;
+
+//     for(int i=0; i<t; i++){
+
+//         ll n;
+//         cin>>n;
+
+//         vector<ll> arr(n);
+
+//         for(int i=0; i<n; i++){
+//             cin>>arr[i];
+//         }
+
+//         unordered_map<int, int> mpp;
+
+//         for(auto it: arr){
+//             mpp[it]++;
+//         }
+
+//         for(auto it: mpp){
+//             if(it.second == 2){
+//                 cout<<it.first;
+//             }
+//         }
+
+//         cout<<endl;
+
+//     }
+// }
+
+
+// N: Intersection Of Array
+
+// int main(){
+
+//     int t;
+//     cin>>t;
+
+//     while(t--){
+
+//         ll n,m;
+//         cin>>n;
+//         vector<int> arr1(n);
+        
+//         for(int i=0; i<n; i++){
+//             cin>>arr1[i];
+//         }
+
+//         cin>>m;
+//         vector<int> arr2(m);
+//         for(int i=0; i<m; i++){
+//             cin>>arr2[i];
+//         }
+
+//         vector<bool> used(m, false);
+
+//         for(int i=0; i<n; i++){
+//             for(int j=0; j<m; j++){
+//                 if(arr1[i] == arr2[j] && !used[j]){
+//                     cout<<arr1[i]<<" ";
+//                     used[j] = true;
+//                     break;
+//                 }
+//             }
+//         }
+//         cout<<endl;
+//     }
+
+// }
+
+
+// O: Pair Sum:
+
+int main(){
+
+    int t;
+    cin>>t;
+
+    while(t--){
+
+        ll n,m;
+        cin>>n;
+        vector<int> arr(n);
+        
+        for(int i=0; i<n; i++){
+            cin>>arr[i];
+        }
+
+        int target;
+        cin>>target;
+
+        unordered_map<int, ll> mpp;
+
+        for(int i=0; i<n; i++){
+            mpp[arr[i]]++;
+        }
+
+        ll count = 0;
+
+        for(auto it: mpp){
+            int num = it.first;
+            int sum = target-num;
+
+            if(mpp.find(sum) != mpp.end()){
+                if(num == sum){
+                    count += (it.second * (it.second-1))/2;
+                }else if(num < sum){
+                    count += it.second * mpp[sum];
+                }
+            }
+        }
+
+        cout<< count <<endl;
+
+    }
 }
