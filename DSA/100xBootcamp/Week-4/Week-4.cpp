@@ -429,46 +429,121 @@ using namespace std;
 
 // O: Pair Sum:
 
+// int main(){
+
+//     int t;
+//     cin>>t;
+
+//     while(t--){
+
+//         ll n,m;
+//         cin>>n;
+//         vector<int> arr(n);
+        
+//         for(int i=0; i<n; i++){
+//             cin>>arr[i];
+//         }
+
+//         int target;
+//         cin>>target;
+
+//         unordered_map<int, ll> mpp;
+
+//         for(int i=0; i<n; i++){
+//             mpp[arr[i]]++;
+//         }
+
+//         ll count = 0;
+
+//         for(auto it: mpp){
+//             int num = it.first;
+//             int sum = target-num;
+
+//             if(mpp.find(sum) != mpp.end()){
+//                 if(num == sum){
+//                     count += (it.second * (it.second-1))/2;
+//                 }else if(num < sum){
+//                     count += it.second * mpp[sum];
+//                 }
+//             }
+//         }
+
+//         cout<< count <<endl;
+
+//     }
+// }
+
+
+// P: Triplets:
+
+
+// int main(){
+//     ll t;
+//     cin>>t;
+
+//     while(t--){
+//         int n;
+//         cin>>n;
+
+//         vector<int> arr(n);
+
+//         for(int i=0; i<n; i++){
+//             cin>>arr[i];
+//         }
+
+//         int target = 0;
+//         cin>>target;
+
+//         int cnt = 0;
+//         for(int i=0; i<n; i++){
+//             for(int j=i+1; j<n; j++){
+//                 for(int k=j+1; k<n; k++){
+//                     if(arr[i] + arr[j] + arr[k] == target){
+//                         cnt++;
+//                     }
+//                 }
+//             }
+//         }
+
+//         cout<<cnt<<endl;
+
+
+//     }
+//}
+
+
+// Q: Count Quadraplets:
+
+
 int main(){
 
-    int t;
-    cin>>t;
+    int n;
+    cin>>n;
 
-    while(t--){
+    int target = 0;
+    cin>>target;
 
-        ll n,m;
-        cin>>n;
-        vector<int> arr(n);
-        
-        for(int i=0; i<n; i++){
-            cin>>arr[i];
-        }
+    vector<int> arr(n);
 
-        int target;
-        cin>>target;
+    for(int i=0; i<n; i++){
+        cin>>arr[i];
+    }
 
-        unordered_map<int, ll> mpp;
 
-        for(int i=0; i<n; i++){
-            mpp[arr[i]]++;
-        }
-
-        ll count = 0;
-
-        for(auto it: mpp){
-            int num = it.first;
-            int sum = target-num;
-
-            if(mpp.find(sum) != mpp.end()){
-                if(num == sum){
-                    count += (it.second * (it.second-1))/2;
-                }else if(num < sum){
-                    count += it.second * mpp[sum];
+    int cnt = 0;
+    for(int i=0; i<n; i++){
+        for(int j=i+1; j<n; j++){
+            for(int k=j+1; k<n; k++){
+                for(int l=k+1; l<n; l++){
+                    if(arr[i] - (2*arr[j]) + (3*arr[k]) - (4*arr[l]) == target){
+                        cnt++;
+                    }
                 }
             }
         }
-
-        cout<< count <<endl;
-
     }
+
+    cout<<cnt;
+
+
 }
