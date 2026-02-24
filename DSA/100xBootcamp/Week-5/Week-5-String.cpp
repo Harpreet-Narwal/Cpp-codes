@@ -1,5 +1,7 @@
 #include<iostream>
 #include<vector>
+#include<algorithm>
+
 
 using namespace std;
 
@@ -123,20 +125,165 @@ using namespace std;
 
 
 
+// int main(){
+//     string a;
+//     char c;
+
+//     cin>>a;
+//     cin>>c;
+//     string ans = "";
+
+//     for(int i=0; i<a.length(); i++){
+//         if(a[i] != c){
+//             ans += a[i];
+//         }
+//     }
+
+//     cout<<ans<<endl;
+
+// }
+
+
+// I: Trim Spaces:
+
+// int main(){
+//     string s;
+
+//     getline(cin, s);
+
+//     s.erase(remove(s.begin(), s.end(), ' '), s.end());
+
+//     cout<<s<<endl;
+
+//     return 0;
+// }
+
+// Alternatively:
+// int main(){
+//     string s;
+
+//     getline(cin, s);
+
+//     string result = "";
+
+//     for(auto c : s){
+//         if(c != ' '){
+//             result += c;
+//         }
+//     }
+//     cout<<result;
+//     return 0;
+// }
+
+
+
+// J : Toggle Case:
+
+
+// int main(){
+//     string s;
+//     cin>>s;
+
+//     for(int i=0; i<s.length(); i++){
+//         if(s[i] >= 'a' && s[i] <= 'z'){
+//             s[i] = (char)toupper(s[i]);
+//         }else{
+//             s[i] = (char)tolower(s[i]);
+//         }
+//     }
+
+//     cout<<s<<endl;
+
+// }
+
+
+// K: Strong Password:
+
+// int main(){
+//     string s;
+//     cin>>s;
+
+//     if(s.length() == 10){
+//        bool isLower = false;
+//        bool isUpper = false;
+//        bool isSpecial = false;
+//        bool isDigit = false;
+//        for(int i=0; i < s.length(); i++){
+//             if(s[i] >= 'a' && s[i] <='z'){
+//                 isLower = true;
+//             }else if(s[i] >= 'A' && s[i] <= 'Z'){
+//                 isUpper = true;
+//             }else if(s[i] >= '0' && s[i] <= '9'){
+//                 isDigit = true;
+//             }
+//             else{
+//                 isSpecial = true;
+//             }
+//        }
+//        if(isLower && isUpper && isSpecial && isDigit){
+//         cout<<"Strong";
+//         return 0;
+//        } 
+//     }
+//     cout<<"Weak"<<endl;
+//     return 0;
+// }
+
+
+// L: Reverse:
+
+// int main(){
+//     string s;
+//     cin>>s;
+
+//     reverse(s.begin(), s.end());
+//     cout<<s;
+//     return 0;
+// }
+
+// M: Palindrome:
+
+
+// int main(){
+//     string s;
+//     cin>>s;
+
+//     bool isPalindrome = true;
+
+//     for(int i=0; i<=s.length()/2; i++){
+//         if(s[i] != s[s.length()-i-1]){
+//             isPalindrome = false;
+
+//         }
+//     }
+
+//     if(isPalindrome){
+//         cout<<"YES";
+//     }else{
+//         cout<<"NO";
+//     }
+
+//     return 0;
+// }
+
+
+// N: Count Words
+
 int main(){
-    string a;
-    char c;
+    string s;
 
-    cin>>a;
-    cin>>c;
-    string ans = "";
+    getline(cin, s);
 
-    for(int i=0; i<a.length(); i++){
-        if(a[i] != c){
-            ans += a[i];
+    int cnt = 1;
+
+    for(int i=0; i<s.length(); i++){
+        if(s[i] == ' '){
+            cnt++;
         }
     }
 
-    cout<<ans<<endl;
+    cout<<cnt;
 
+    return 0;
+   
 }
