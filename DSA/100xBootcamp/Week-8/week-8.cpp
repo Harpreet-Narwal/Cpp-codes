@@ -147,15 +147,109 @@ int main(){
 
 // D: Counting Factors:
 
+// int main(){
+//     ll n;
+//     cin>>n;
+//     ll cnt = 0;
+//     for(ll i=1; i * i <= n; i++){
+//         if(n % i == 0){
+//             cnt++;
+//             if(i != n/i) cnt++;
+//         }
+//     }
+//     cout<<cnt<<endl;
+// }
+
+// E: Am I Prime: 
+
+// int main(){
+//     ll n;
+//     cin>>n;
+//     int cnt = 0;
+//     if(n <= 1) cout<<"NO";
+//     else{
+//         for(ll i=2; i*i <= n; i++){
+//             if(n % i == 0){
+//                 cnt++;
+//             }
+//         }
+//         if(cnt > 0){
+//             cout<<"NO";
+//         }else{
+//             cout<<"YES";
+//         }
+//     } 
+//     return 0;
+
+// }
+
+
+// F: 
+
+// int main(){
+//     ll n;
+//     cin>>n;
+
+//     vector<bool> is_prime(n+1, true);
+//     is_prime[0] = is_prime[1] = false;
+//     for(ll i=2; i * i <= n; i++){
+//         if(is_prime[i] && i*i <= n){
+//             for(int j=i*i; j<= n; j+= i){
+//                 is_prime[j] = false;
+//             }
+//         }
+//     }
+
+//     int cnt =0;
+//     for(int i=0; i<is_prime.size(); i++){
+//         if(is_prime[i]) cnt++;
+//     }
+//     cout<<cnt;
+
+
+// }
+
+// G: Print Factors:
+
+
+
+// int main(){
+//     ll n;
+//     cin>>n;
+//     vector<ll> arr;
+//     for(ll i=1; i * i <= n; i++){
+//         if(n % i == 0){
+//             arr.push_back(i);
+//             if(i != n/i) arr.push_back(n/i);
+//         }
+//     }
+//     sort(arr.begin(), arr.end());
+//     for(ll i=0; i<arr.size(); i++){
+//         cout<<arr[i]<<" ";
+//     }
+
+// }
+
+// H: Kth smallest:
+
+
 int main(){
-    ll n;
-    cin>>n;
-    ll cnt = 0;
+    ll n, k;
+    cin>>n>>k;
+    vector<ll> arr;
     for(ll i=1; i * i <= n; i++){
         if(n % i == 0){
-            cnt++;
-            if(i != n/i) cnt++;
+            arr.push_back(i);
+            if(i != n/i) arr.push_back(n/i);
         }
     }
-    cout<<cnt<<endl;
+    sort(arr.begin(), arr.end());
+
+    if(arr.size() >= k){
+        cout<<arr[k-1];
+    }else{
+        cout<<-1;
+    }
+
+
 }
