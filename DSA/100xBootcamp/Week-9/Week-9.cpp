@@ -114,29 +114,107 @@ using namespace std;
     
 // }
 
-int main(){
-    int n;
-    cin>>n;
-    vector<ll> prefix(n+1, 0);
+// B: Even sum query
+// int main(){
+//     int n;
+//     cin>>n;
+//     vector<ll> prefix(n+1, 0);
 
+//     for(int i=1; i<=n; i++){
+//         ll x;
+//         cin>>x;
+//         if(i % 2 == 0){
+//             prefix[i] = prefix[i-1] + x;
+//         }else{
+//             prefix[i] = prefix[i-1];
+//         }
+//     }
+
+//     int q;
+//     cin>>q;
+
+//     while(q--){
+//         int l, r;
+//         cin>>l>>r;
+
+//         cout<<prefix[r] - prefix[l-1]<<endl;
+//     }
+    
+// }
+
+
+// C: Count Vowels:
+
+// int main(){
+//     int n;
+//     cin>>n;
+
+//     vector<char> arr(n);
+//     for(int i=0; i<n; i++){
+//         cin>>arr[i];
+//     }
+
+//     int q;
+//     cin>>q;
+//     while(q--){
+//         int l, r;
+//         cin>>l>>r;
+//         int cnt =0;
+//         for(int i=l-1; i<r; i++){
+//             char ch = arr[i];
+//             if(ch == 'a' || ch == 'e' || ch == 'i' || ch == 'o' || ch == 'u'){
+//                 cnt++;
+//             }
+//         }
+//         cout<<cnt<<endl;
+//     }
+// }
+
+
+// int main(){
+//     int n;
+//     cin>>n;
+//     string s;
+//     cin>>s;
+
+//     vector<int> prefixCount(n+1);
+//     for(int i=0; i<n; i++){
+//         prefixCount[i+1] = prefixCount[i];
+//         if(s[i] == 'a' || s[i] == 'e' || s[i] == 'i' || s[i] == 'o' || s[i] == 'u'){
+//             prefixCount[i+1]++;
+//         }
+//     }
+
+//     int q;
+//     cin>>q;
+//     while(q--){
+//         int l, r;
+//         cin>>l>>r;
+
+//         cout<<prefixCount[r]-prefixCount[l-1]<<endl;
+//     }
+
+// }
+
+
+// D: Range Sum of Square:
+
+int main(){
+    int n, q;
+    cin>>n>>q;
+
+    vector<ll> prefixSq(n+1, 0);
     for(int i=1; i<=n; i++){
         ll x;
         cin>>x;
-        if(i % 2 == 0){
-            prefix[i] = prefix[i-1] + x;
-        }else{
-            prefix[i] = prefix[i-1];
-        }
+        ll sq = x * x;
+        prefixSq[i] = prefixSq[i-1] + sq;
     }
-
-    int q;
-    cin>>q;
 
     while(q--){
         int l, r;
         cin>>l>>r;
 
-        cout<<prefix[r] - prefix[l-1]<<endl;
+        cout<<prefixSq[r] - prefixSq[l-1]<<endl;
     }
-    
 }
