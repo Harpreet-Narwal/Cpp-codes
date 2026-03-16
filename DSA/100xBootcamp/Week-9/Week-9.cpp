@@ -199,22 +199,111 @@ using namespace std;
 
 // D: Range Sum of Square:
 
-int main(){
-    int n, q;
-    cin>>n>>q;
+// int main(){
+//     int n, q;
+//     cin>>n>>q;
 
-    vector<ll> prefixSq(n+1, 0);
-    for(int i=1; i<=n; i++){
-        ll x;
+//     vector<ll> prefixSq(n+1, 0);
+//     for(int i=1; i<=n; i++){
+//         ll x;
+//         cin>>x;
+//         ll sq = x * x;
+//         prefixSq[i] = prefixSq[i-1] + sq;
+//     }
+
+//     while(q--){
+//         int l, r;
+//         cin>>l>>r;
+
+//         cout<<prefixSq[r] - prefixSq[l-1]<<endl;
+//     }
+// }
+
+
+// E: Count number with Digit Sum k:
+
+// int digitSum(int n){
+//     int sum = 0;
+//     while(n > 0){
+//         sum += n % 10;
+//         n /= 10;
+//     }
+//     return sum;
+// }
+
+
+// int main(){
+//     int n, q, k;
+//     cin>>n>>q>>k;
+
+//     vector<int> prefixDig(n+1, 0);
+
+//     for(int i=1; i<=n ;i++){
+//         int x;
+//         cin>>x;
+//         if(digitSum(x) == k){
+//             prefixDig[i] = prefixDig[i-1] + 1;
+//         }else{
+//             prefixDig[i] = prefixDig[i-1];
+//         }
+//     }
+
+//     while(q--){
+//         int l, r;
+//         cin>>l>>r;
+
+//         cout<<prefixDig[r] - prefixDig[l-1]<<endl;
+//     }
+
+// }
+
+
+// [1, 1, 0, 1, 1] --> [1, 2, 2, 3, 4]
+// [1, 3] -> arr[r-1] -  -> 2
+// [2, 5] --> arr[r-1]
+
+
+// F: Count numbers with exactly K factors:
+
+int fact(int n){
+    int cnt = 0;
+
+    for(int i=1; i*i <= n; i++){
+        if(n % i == 0){
+            cnt++;
+            if(i != n/i) cnt++;
+        }
+    }
+
+    return cnt;
+
+}
+
+
+int main(){
+    int n, q, k;
+    cin>>n>>q>>k;
+
+    vector<int> arr(n+1, 0);
+
+    for(int i=1; i<= n; i++){
+        int x;
         cin>>x;
-        ll sq = x * x;
-        prefixSq[i] = prefixSq[i-1] + sq;
+
+        int factors = fact(x);
+        if(factors == k){
+            arr[i] = arr[i-1] + 1;
+        }else{
+            arr[i] = arr[i-1];
+        }
     }
 
     while(q--){
         int l, r;
         cin>>l>>r;
 
-        cout<<prefixSq[r] - prefixSq[l-1]<<endl;
+        cout<<arr[r] - arr[l-1]<<endl;
     }
+
+
 }
