@@ -265,45 +265,237 @@ using namespace std;
 
 // F: Count numbers with exactly K factors:
 
-int fact(int n){
-    int cnt = 0;
+// int fact(int n){
+//     int cnt = 0;
 
-    for(int i=1; i*i <= n; i++){
-        if(n % i == 0){
-            cnt++;
-            if(i != n/i) cnt++;
-        }
-    }
+//     for(int i=1; i*i <= n; i++){
+//         if(n % i == 0){
+//             cnt++;
+//             if(i != n/i) cnt++;
+//         }
+//     }
 
-    return cnt;
+//     return cnt;
 
-}
+// }
 
+
+// int main(){
+//     int n, q, k;
+//     cin>>n>>q>>k;
+
+//     vector<int> arr(n+1, 0);
+
+//     for(int i=1; i<= n; i++){
+//         int x;
+//         cin>>x;
+
+//         int factors = fact(x);
+//         if(factors == k){
+//             arr[i] = arr[i-1] + 1;
+//         }else{
+//             arr[i] = arr[i-1];
+//         }
+//     }
+
+//     while(q--){
+//         int l, r;
+//         cin>>l>>r;
+
+//         cout<<arr[r] - arr[l-1]<<endl;
+//     }
+
+
+// }
+
+
+// G: Alternating Range Sum:
+
+// int main(){
+//     int n, q;
+//     cin>>n>>q;
+
+//     vector<ll> prefixOdd(n+1, 0);
+//     vector<ll> prefixEven(n+1, 0);
+
+//     for(int i=1; i<= n; i++){
+//         ll x;
+//         cin>>x;
+//         prefixOdd[i] = prefixOdd[i-1] + (i % 2 == 1 ? x : -x);
+//         prefixEven[i] = prefixEven[i-1] + (i % 2 == 0 ? x : -x);
+//     }
+
+//     while(q--){
+//         int l, r;
+//         cin>>l>>r;
+
+//         if(l % 2 == 1){
+//             cout<<prefixOdd[r] - prefixOdd[l-1]<<endl;
+//         }else{
+//             cout<<prefixEven[r] - prefixEven[l-1]<<endl;
+//         }
+//     }
+
+// }
+
+
+// H: Print all subarray:
+
+// void fun(int ind, vector<vector<int>> &ans, vector<int> &list, vector<int> &nums){
+//     if(ind == nums.size()){
+//         ans.push_back(list);
+//         return;
+//     }
+//     list.push_back(nums[ind]);
+//     fun(ind+1, ans, list, nums);
+//     list.pop_back();
+//     fun(ind+1, ans, list, nums);
+// }
+
+// vector<vector<int>> powerSet(vector<int> &nums){
+//     vector<vector<int>> ans;
+//     vector<int> list;
+
+//     fun(0, ans, list, nums);
+//     return ans;
+// }
+
+
+// int main(){
+//     int n;
+//     cin>>n;
+//     vector<int> arr(n);
+//     for(int i=0; i<n; i++){
+//         cin>>arr[i];
+//     }
+//     vector<vector<int>> result = powerSet(arr);
+
+//     for(auto subset : result){
+//         for(int num: subset){
+//             cout<<num<<" "; 
+//         }
+//         cout<<endl;
+//     }
+
+//     return 0;
+
+// }
+
+
+// int main(){
+//     int n;
+//     cin>>n;
+
+//     vector<int> arr(n);
+//     for(int i=0; i<n; i++){
+//         cin>>arr[i];
+//     }
+
+//     for(int l=0; l<n; l++){
+//         for(int r=l ;r<n; r++){
+//             for(int i=l ;i<= r; i++){
+//                 cout<<arr[i];
+//                 if(l < r){
+//                     cout<<" ";
+//                 }
+//             }
+//             cout<<endl;
+//         }
+
+//     }
+
+// }
+
+
+// I & J: Sum of all subarray separately: (Easy)
+
+// int main(){
+//     int n;
+//     cin>>n;
+
+//     vector<int> arr(n);
+//     for(int i=0; i<n; i++){
+//         cin>>arr[i];
+//     }
+
+//     for(int l=0; l<n; l++){
+//     int sum = 0;
+
+//         for(int r=l; r<n; r++){
+//             sum += arr[r];
+//             cout<<sum<<"\n";
+//         }
+//     }
+
+// }
+
+
+// K: Sum of All subarrays (Easy):
+// int main(){
+//     int n;
+//     cin>>n;
+
+//     vector<ll> arr(n);
+//     for(int i=0; i<n; i++){
+//         cin>>arr[i];
+//     }
+//     ll ans = 0;
+//     for(int l=0; l<n; l++){
+//     ll sum = 0;
+//         for(int r=l; r<n; r++){
+//             sum += arr[r];
+//             ans += sum;
+//         }
+//     }
+//     cout<<ans;
+
+// }
+
+// L & M: Sum of all Subarray (medium & hard)
+
+// int main(){
+//     int n;
+//     cin>>n;
+
+//     vector<ll> arr(n);
+//     for(int i=0; i<n; i++){
+//         cin>>arr[i];
+//     }
+
+//     ll ans = 0;
+//     for(int i=0; i<n; i++){
+//         ans += arr[i] * (ll)(i+1) * (n-i);
+//     }
+
+//     cout<<ans;
+
+// }
+
+
+// N: Maximum Subarray sum of size K:
 
 int main(){
-    int n, q, k;
-    cin>>n>>q>>k;
+    int n, k;
+    cin>>n>>k;
 
-    vector<int> arr(n+1, 0);
+    vector<ll> arr(n);
 
-    for(int i=1; i<= n; i++){
-        int x;
-        cin>>x;
-
-        int factors = fact(x);
-        if(factors == k){
-            arr[i] = arr[i-1] + 1;
-        }else{
-            arr[i] = arr[i-1];
-        }
+    for(int i=0; i<n; i++){
+        cin>>arr[i];
+    }
+    ll sum = 0;
+    for(int i=0; i<k; i++){
+        sum += arr[i];
     }
 
-    while(q--){
-        int l, r;
-        cin>>l>>r;
+    ll maxSum = sum;
 
-        cout<<arr[r] - arr[l-1]<<endl;
+    for(int i=k; i<n; i++){
+        sum += arr[i];
+        sum -= arr[i-k];
+        maxSum = max(maxSum, sum);
     }
 
+    cout<<maxSum;
 
 }
