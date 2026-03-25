@@ -1,4 +1,5 @@
 #include<bits/stdc++.h>
+typedef long long ll;
 using namespace std;
 
 // A: Count Distinct:
@@ -211,38 +212,128 @@ using namespace std;
 
 // G: Intersection of Two Array - II:
 
+// int main(){
+//     int n;
+//     cin>>n;
+
+//     map<int, int> mppA;
+
+//     for(int i=0; i<n; i++){
+//         int x; cin>>x;
+//         mppA[x]++;
+//     }
+
+//     int m;
+//     cin>>m;
+
+//     map<int, int> mppB;
+//     for(int i=0; i<m; i++){
+//         int x;
+//         cin>>x;
+//         mppB[x]++;
+//     }
+
+//     vector<int> result;
+//     for(auto it: mppA){
+//         int val = it.first;
+//         int cnt = min(mppA[val], mppB[val]);
+//         for(int i=0; i<cnt; i++){
+//             result.push_back(val);
+//         }
+//     }
+
+//     cout<<result.size()<<"\n";
+//     for(int x : result){
+//         cout<<x<<" ";
+//     }
+// }
+
+
+// H: Two Sum - I
+
+// int main(){
+//     int n;
+//     ll x;
+//     cin>>n>>x;
+
+//     unordered_map<ll, int> mpp;
+
+//     for(int i=0; i<n; i++){
+//         ll a;
+//         cin>>a;
+//         mpp[a]++;
+//     }
+
+
+//     for(auto it: mpp){
+//         ll complement = x - it.first;
+//         if(mpp.find(complement) != mpp.end()){
+//             if(complement == it.first && it.second < 2) continue;
+//             cout<<"TRUE";
+//             return 0;
+//         }
+//     }
+
+//     cout<<"FALSE";
+    
+// }
+
+// I : Two Sum - II
+
+// int main(){
+//     int n;
+//     ll x;
+//     cin>>n>>x;
+
+//     unordered_map<ll, int> mpp;
+
+
+//     for(int i=1; i<=n; i++){
+//         ll a;
+//         cin>>a;
+
+//         ll complement = x - a;
+
+//         if(mpp.find(complement) != mpp.end()){
+//             cout<<mpp[complement]<<" "<< i;
+//             return 0;
+//         }
+//         mpp[a] = i;
+//     }
+
+//     cout<< -1;
+
+
+// }
+
+
+// J : Two Sum  - III
+
 int main(){
     int n;
-    cin>>n;
+    ll x;
+    cin>>n>>x;
 
-    map<int, int> mppA;
+    unordered_map<ll, ll> mpp;
 
-    for(int i=0; i<n; i++){
-        int x; cin>>x;
-        mppA[x]++;
+    for(int i=1; i<=n; i++){
+        ll a;
+        cin>>a;
+        mpp[a]++;
     }
 
-    int m;
-    cin>>m;
-
-    map<int, int> mppB;
-    for(int i=0; i<m; i++){
-        int x;
-        cin>>x;
-        mppB[x]++;
-    }
-
-    vector<int> result;
-    for(auto it: mppA){
-        int val = it.first;
-        int cnt = min(mppA[val], mppB[val]);
-        for(int i=0; i<cnt; i++){
-            result.push_back(val);
+    ll cnt = 0;
+    for(auto it: mpp){
+        ll complement = x - it.first;
+        if(mpp.find(complement) != mpp.end()){
+            if(complement == it.first){
+                cnt += it.second * (it.second-1)/2;
+            }else if(complement > it.first){
+                 cnt += it.second * mpp[complement];
+            }
         }
     }
 
-    cout<<result.size()<<"\n";
-    for(int x : result){
-        cout<<x<<" ";
-    }
+    cout<<cnt;
+    return 0;
 }
