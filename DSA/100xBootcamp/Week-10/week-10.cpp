@@ -309,31 +309,120 @@ using namespace std;
 
 // J : Two Sum  - III
 
+// int main(){
+//     int n;
+//     ll x;
+//     cin>>n>>x;
+
+//     unordered_map<ll, ll> mpp;
+
+//     for(int i=1; i<=n; i++){
+//         ll a;
+//         cin>>a;
+//         mpp[a]++;
+//     }
+
+//     ll cnt = 0;
+//     for(auto it: mpp){
+//         ll complement = x - it.first;
+//         if(mpp.find(complement) != mpp.end()){
+//             if(complement == it.first){
+//                 cnt += it.second * (it.second-1)/2;
+//             }else if(complement > it.first){
+//                  cnt += it.second * mpp[complement];
+//             }
+//         }
+//     }
+
+//     cout<<cnt;
+//     return 0;
+// }
+
+//  K : Subarray Sum equal to K
+// int main(){
+//     ll n, x;
+//     cin>>n>>x;
+
+//     vector<ll> arr(n);
+
+//     for(int i=0; i<n; i++){
+//         cin>>arr[i];
+//     }
+
+//     unordered_set<ll> prefixSt;
+//     prefixSt.insert(0);
+//     ll sum = 0;
+
+//     for(int i=0; i<n; i++){
+//         sum += arr[i];
+//         if(prefixSt.count(sum-x)){
+//             cout<<"YES";
+//             return 0;
+//         }
+//         prefixSt.insert(sum);
+//     }
+
+//     cout<<"NO";
+//     return 0;
+
+// } 
+
+// L : Find Subarray with sum x:
+
+
+// int main(){
+//     ll n, x;
+//     cin>>n>>x;
+
+//     vector<ll> arr(n);
+//     for(int i=0; i< n; i++){
+//         cin>>arr[i];
+//     }
+
+//     unordered_map<ll, int> mpp; 
+//     mpp[0] = -1;
+//     ll sum = 0;
+
+//     for(int i=0; i<n; i++){
+//         sum += arr[i];
+
+//         if(mpp.count(sum - x)){
+//             int start = mpp[sum-x] + 1;
+//             int end = i;
+//             cout<<start + 1 << " "<< end + 1;
+//             return 0;
+//         }
+//         mpp[sum] = i;
+//     }
+//     cout<<-1<<endl;
+//     return 0;
+
+// }
+
+
+// M : Count Subarray with Sum K:
+
 int main(){
-    int n;
-    ll x;
+    ll n , x;
     cin>>n>>x;
+    
+    vector<ll> arr(n);
 
-    unordered_map<ll, ll> mpp;
-
-    for(int i=1; i<=n; i++){
-        ll a;
-        cin>>a;
-        mpp[a]++;
+    for(int i=0; i<n; i++){
+        cin>>arr[i];
     }
 
-    ll cnt = 0;
-    for(auto it: mpp){
-        ll complement = x - it.first;
-        if(mpp.find(complement) != mpp.end()){
-            if(complement == it.first){
-                cnt += it.second * (it.second-1)/2;
-            }else if(complement > it.first){
-                 cnt += it.second * mpp[complement];
-            }
-        }
+    unordered_map<ll, ll> prefix;
+    prefix[0] = 1;
+    ll sum = 0, cnt = 0;
+
+    for(int i=0; i<n; i++){
+        sum += arr[i];
+        cnt += prefix[sum-x];
+        prefix[sum]++;
     }
 
     cout<<cnt;
     return 0;
+
 }
