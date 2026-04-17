@@ -1,0 +1,1 @@
+{"name":"Local: Week-12-BS","url":"/Users/happy/Desktop/CppCoding/DSA/100xBootcamp/Week-12/Week-12-BS.cpp","tests":[{"id":1776356727709,"input":"8 5\n1 2 2 3 2 4 4 4\n2 4\n1 1\n5 10\n-3 2\n4 2\n","output":""}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/Users/happy/Desktop/CppCoding/DSA/100xBootcamp/Week-12/Week-12-BS.cpp","group":"local","local":true}

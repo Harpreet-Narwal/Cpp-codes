@@ -419,7 +419,7 @@ int main(){
     for(int i=0; i<n; i++){
         sum += arr[i];
         cnt += prefix[sum-x];
-        prefix[sum]++;
+        prefix[sum]++;x
     }
 
     cout<<cnt;
