@@ -113,35 +113,152 @@ typedef long long ll;
 // D : Count Good Numbers:
 
 
+// int main(){
+//     ll n, m, k;
+//     cin>>n>>m>>k;
+
+//     vector<ll> arr(n);
+//     for(int i=0; i<n; i++){
+//         cin>>arr[i];
+//     }
+
+//     unordered_set<ll> goodNumbers;
+//     for(int i=0; i<m; i++){
+//         ll x; cin>>x;
+//         goodNumbers.insert(x);
+//     }
+
+//     int cnt = 0;
+
+//     for(int i=0; i<k; i++){
+//         if(goodNumbers.count(arr[i])) cnt++;
+//     }
+
+//     cout<<cnt;
+
+//     for(int i=k; i<n; i++){
+//         if(goodNumbers.count(arr[i])) cnt++;
+//         if(goodNumbers.count(arr[i-k])) cnt--;
+
+//         cout<<" " << cnt;
+//     }
+//     cout<<"\n";
+//     return 0;
+// }   
+
+
+// E : Longest Subarray with Sum < k:
+
+// int main(){
+//     ll n, k;
+//     cin>>n>>k;
+
+//     vector<ll> arr(n);
+//     for(int i=0; i<n; i++){
+//         cin>>arr[i];
+//     }
+
+//     int left = 0, maxlen = 0;
+//     ll sum = 0;
+
+//     for(int i=0; i<n; i++){
+//         sum += arr[i];
+//         if(sum >= k){
+//             sum -= arr[left];
+//             left++;
+//         }
+//         maxlen = max(maxlen, i-left + 1);
+//     }
+
+//     cout<<maxlen;
+
+// }
+
+
+// F : Longest Substring without repeating characters:
+
+// int main(){
+//     int n;
+//     cin>>n;
+//     string s;
+//     cin>>s;
+
+
+//     unordered_map<char, int> mpp;
+
+//     int left = 0, maxLen = 0;
+
+//     // for(int i=0; i<n; i++){
+//     //     if(mpp.find(s[i]) != mpp.end() && mpp[s[i]] >= left){
+//     //         left = mpp[s[i]] + 1;
+//     //     }
+//     //     mpp[s[i]] = i;
+//     //     maxLen = max(maxLen, i-left + 1);
+//     // }
+
+//     for(int right = 0; right < n; right++){
+//         mpp[s[right]]++;
+//         while(mpp[s[right]] > 1){
+//             mpp[s[left]]--;
+//             left++;
+//         }
+//         maxLen = max(maxLen, right-left + 1);
+//     }
+
+//     cout<<maxLen;
+
+// }
+
+// G: Longest Substring with At most K distinct Characters
+
+// int main(){
+//     int n, k;
+//     cin>>n>>k;
+//     string s;
+//     cin>>s;
+
+//     unordered_map<char, int> mpp;
+//     int left = 0, maxLen = 0;
+
+//     for(int right = 0; right < n; right++){
+//         mpp[s[right]]++;
+//         if(mpp.size() > k){
+//             mpp[s[left]]--;
+//             if(mpp[s[left]] == 0){
+//                 mpp.erase(s[left]);
+//             }
+//             left++;
+//         }
+//         maxLen = max(maxLen, right-left + 1);
+//     }
+
+//     cout<<maxLen;
+// }
+
+// H : Count Subarray with Sum < K:
+
 int main(){
-    ll n, m, k;
-    cin>>n>>m>>k;
+    ll n, k;
+    cin>>n>>k;
 
     vector<ll> arr(n);
     for(int i=0; i<n; i++){
         cin>>arr[i];
     }
 
-    unordered_set<ll> goodNumbers;
-    for(int i=0; i<m; i++){
-        ll x; cin>>x;
-        goodNumbers.insert(x);
-    }
+    int left = 0;
+    ll sum =0, cnt = 0;
 
-    int cnt = 0;
+    for(int right = 0; right < n; right++){
+        sum += arr[right];
 
-    for(int i=0; i<k; i++){
-        if(goodNumbers.count(arr[i])) cnt++;
+        while(sum >= k){
+            sum -= arr[left];
+            left++;
+        }
+        cnt += right-left + 1;
     }
 
     cout<<cnt;
 
-    for(int i=k; i<n; i++){
-        if(goodNumbers.count(arr[i])) cnt++;
-        if(goodNumbers.count(arr[i-k])) cnt--;
-
-        cout<<" " << cnt;
-    }
-    cout<<"\n";
-    return 0;
-}   
+}
