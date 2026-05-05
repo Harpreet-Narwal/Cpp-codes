@@ -237,6 +237,64 @@ typedef long long ll;
 
 // H : Count Subarray with Sum < K:
 
+// int main(){
+//     ll n, k;
+//     cin>>n>>k;
+
+//     vector<ll> arr(n);
+//     for(int i=0; i<n; i++){
+//         cin>>arr[i];
+//     }
+
+//     int left = 0;
+//     ll sum =0, cnt = 0;
+
+//     for(int right = 0; right < n; right++){
+//         sum += arr[right];
+
+//         while(sum >= k){
+//             sum -= arr[left];
+//             left++;
+//         }
+//         cnt += right-left + 1;
+//     }
+
+//     cout<<cnt;
+
+// }
+
+
+// I : Count Subarrays with At most K distinct
+
+// int main(){
+//     ll n, k;
+//     cin>>n>>k;
+
+//     vector<int> arr(n);
+
+//     for(int i=0; i<n; i++){
+//         cin>>arr[i];
+//     }
+
+//     unordered_map<int, int> mpp;
+//     ll left = 0, maxLen = 0;
+
+//     for(int i=0; i<n; i++){
+//         mpp[arr[i]]++;
+//         while(mpp.size() > k){
+//             mpp[arr[left]]--;
+//             if(mpp[arr[left]] == 0) mpp.erase(arr[left]);
+//             left++;
+//         }
+//         maxLen +=  i-left+1;
+//     }
+
+//     cout<<maxLen;
+// }
+
+
+// J : Smallest Subarray with Sum > K
+
 int main(){
     ll n, k;
     cin>>n>>k;
@@ -246,19 +304,19 @@ int main(){
         cin>>arr[i];
     }
 
+    int ans = INT_MAX;
+    ll sum = 0;
     int left = 0;
-    ll sum =0, cnt = 0;
 
-    for(int right = 0; right < n; right++){
+    for(int right=0; right<n; right++){
         sum += arr[right];
 
-        while(sum >= k){
+        while(sum > k){
+            ans = min(ans,right-left+1);
             sum -= arr[left];
             left++;
         }
-        cnt += right-left + 1;
     }
 
-    cout<<cnt;
-
+    cout<<(ans == INT_MAX ? -1 : ans);
 }
